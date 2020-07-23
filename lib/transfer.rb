@@ -17,7 +17,7 @@ class Transfer
     (@sender.valid? && @receiver.valid?) == true ? true : false
   end
   
-  def status=(status)
+  def update_status(status)
     @status = status  
   end
   
@@ -35,9 +35,9 @@ class Transfer
     elsif self.valid? == true && @amount <= @sender.balance
       @sender.balance -= @amount
       @receiver.balance += @amount
-      self.status=("complete")
+      self.update_status("complete")
     else
-      self.status=("rejected")
+      self.update_status("rejected")
       "Transaction rejected. Please check your account balance."
     end
   end
@@ -46,7 +46,7 @@ class Transfer
     if @status == "complete"
       @receiver.balance -= @amount
       @sender.balance += @amount
-      @status = "reversed"
+      self.update_status("reversed")
     elsif @status == "reversed"
       "This transcation has already been reversed."
     elsif @status == "pending"
