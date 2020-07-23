@@ -6,8 +6,8 @@ class Transfer
   @@all = []
 
   def initialize(sender, receiver, amount=50)
-    @sender = BankAccount.find_account_by_name(sender_name)
-    @receiver = BankAccount.find_account_by_name(receiver_name)
+    @sender = BankAccount.find_account_by_name(sender)
+    @receiver = BankAccount.find_account_by_name(receiver)
     @amount = amount
     @status = "pending"
     save
