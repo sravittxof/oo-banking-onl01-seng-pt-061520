@@ -5,7 +5,7 @@ class Transfer
 
   @@all = []
 
-  def initialize(sender_name, receiver_name, amount=50)
+  def initialize(sender, receiver, amount=50)
     @sender = BankAccount.find_account_by_name(sender_name)
     @receiver = BankAccount.find_account_by_name(receiver_name)
     @amount = amount
